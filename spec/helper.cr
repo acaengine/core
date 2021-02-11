@@ -44,6 +44,8 @@ def module_manager_mock
   PlaceOS::Core::ModuleManager.new(CORE_URL, discovery: discovery, clustering: clustering)
 end
 
+Spec.after_each { GC.collect }
+
 macro around_suite(block)
   Spec.before_suite do
     {{ block }}.call
