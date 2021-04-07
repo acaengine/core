@@ -33,20 +33,20 @@ dependencies:
 
   placeos-compiler:
     github: placeos/compiler
-    version: ~> 3.0
+    version: 3.3.3
 
   placeos-driver:
     github: placeos/driver
-    version: ~> 3.6
+    version: ">= 3.6, < 5"
 
   placeos-models:
     github: placeos/models
-    version: ~> 4
+    version: ~> 4.5.3
 
   placeos-resource:
     github: place-labs/resource
     branch: master
-    version: ~> 1
+    version: 1.0.6
 
   promise:
     github: spider-gazelle/promise
@@ -67,6 +67,6 @@ dependencies:
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
-
+    version: ~> 0.13.1
   faker:
     github: askn/faker

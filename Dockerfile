@@ -35,7 +35,7 @@ RUN chown appuser -R /app
 COPY shard.yml /app
 COPY shard.lock /app
 RUN PLACE_COMMIT=$PLACE_COMMIT \
-    shards install --production
+    shards install --production --ignore-crystal-version
 
 # Add source last for efficient caching
 COPY src /app/src
