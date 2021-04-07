@@ -46,11 +46,11 @@ dependencies:
 
   placeos-models:
     github: placeos/models
-    version: ~> 4.12
+    version: ~> 4.12.1
 
   placeos-resource:
     github: place-labs/resource
-    version: ~> 1
+    version: 1.0.6
 
   promise:
     github: spider-gazelle/promise
@@ -78,6 +78,7 @@ dependencies:
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
+    version: ~> 0.14.0
 
   faker:
     github: askn/faker

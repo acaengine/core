@@ -9,7 +9,7 @@ ARG TARGET
 WORKDIR /app
 
 # Install the latest version of LibSSH2, ping
-RUN apk add --no-cache libssh2 libssh2-dev libssh2-static iputils
+RUN apk add --no-cache libssh2 libssh2-dev libssh2-static iputils yaml-static
 
 # Add trusted CAs for communicating with external services
 RUN apk update && apk add --no-cache ca-certificates tzdata && update-ca-certificates
@@ -31,7 +31,7 @@ RUN adduser \
 COPY shard.yml /app
 COPY shard.override.yml /app
 COPY shard.lock /app
-RUN shards install --production --release
+RUN shards install --production --release --ignore-crystal-version
 
 # Add source last for efficient caching
 COPY src /app/src
