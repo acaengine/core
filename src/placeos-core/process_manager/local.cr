@@ -208,18 +208,17 @@ module PlaceOS::Core
       @driver_protocol_managers : Hash(String, Driver::Protocol::Management) = {} of String => Driver::Protocol::Management
 
       protected def protocol_manager_by_module?(module_id) : Driver::Protocol::Management?
-        protocol_manager_lock.synchronize do
-          @module_protocol_managers[module_id]?.tap do |manager|
-            Log.info { "missing module manager for #{module_id}" } if manager.nil?
-          end
-        end
+        manager_by_key?(module_id, @module_protocol_managers)
       end
 
       protected def protocol_manager_by_driver?(driver_key) : Driver::Protocol::Management?
-        key = ProcessManager.path_to_key(driver_key)
+        manager_by_key?(ProcessManager.path_to_key(driver_key), @driver_protocol_managers)
+      end
+
+      private def manager_by_key(key, managers)
         protocol_manager_lock.synchronize do
           @driver_protocol_managers[key]?.tap do |manager|
-            Log.info { "missing module manager for #{key}" } if manager.nil?
+            Log.debug { "missing module manager for #{key}" } if manager.nil?
           end
         end
       end
