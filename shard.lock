@@ -1,3 +1,4 @@
+# NOTICE: This lockfile contains some overrides from shard.override.yml
 version: 2.0
 shards:
   CrystalEmail:
@@ -16,9 +17,21 @@ shards:
     git: https://github.com/crystal-ameba/ameba.git
     version: 0.14.3
 
+  awscr-s3:
+    git: https://github.com/taylorfinnell/awscr-s3.git
+    version: 0.8.2
+
+  awscr-signer:
+    git: https://github.com/taylorfinnell/awscr-signer.git
+    version: 0.8.2
+
   bindata:
     git: https://github.com/spider-gazelle/bindata.git
     version: 1.9.0
+
+  clip:
+    git: https://github.com/erdnaxeli/clip.git
+    version: 0.2.4
 
   clustering:
     git: https://github.com/place-labs/clustering.git
@@ -100,6 +113,10 @@ shards:
     git: https://github.com/luckyframework/lucky_router.git
     version: 0.4.2
 
+  molinillo:
+    git: https://github.com/crystal-lang/crystal-molinillo.git
+    version: 0.2.0
+
   murmur3:
     git: https://github.com/aca-labs/murmur3.git
     version: 0.1.1+git.commit.7cbe25c0ca8d052c9d98c377c824dcb0e038c790
@@ -108,9 +125,21 @@ shards:
     git: https://github.com/spider-gazelle/neuroplastic.git
     version: 1.7.1
 
+  open_api:
+    git: https://github.com/elbywan/open_api.cr.git
+    version: 1.3.0
+
+  openapi-generator:
+    git: https://github.com/place-labs/openapi-generator.git
+    version: 2.1.0+git.commit.d925772ae1f36c51c0665d743bba4ac6ca9466a8
+
   openssl_ext:
     git: https://github.com/spider-gazelle/openssl_ext.git
     version: 2.1.5
+
+  placeos-build:
+    git: https://github.com/placeos/build.git
+    version: 0.2.0
 
   placeos-compiler:
     git: https://github.com/placeos/compiler.git
@@ -118,7 +147,7 @@ shards:
 
   placeos-driver:
     git: https://github.com/placeos/driver.git
-    version: 5.4.4
+    version: 5.4.5
 
   placeos-log-backend:
     git: https://github.com/place-labs/log-backend.git
@@ -126,7 +155,7 @@ shards:
 
   placeos-models:
     git: https://github.com/placeos/models.git
-    version: 5.7.0
+    version: 5.7.1
 
   placeos-resource:
     git: https://github.com/place-labs/resource.git
@@ -162,7 +191,7 @@ shards:
 
   rethinkdb-orm:
     git: https://github.com/spider-gazelle/rethinkdb-orm.git
-    version: 4.1.0
+    version: 4.1.1
 
   retriable:
     git: https://github.com/sija/retriable.cr.git
@@ -172,9 +201,13 @@ shards:
     git: https://github.com/spider-gazelle/readers-writer.git
     version: 1.0.7
 
-  secrets-env:
+  secrets-env: # Overridden
     git: https://github.com/spider-gazelle/secrets-env.git
     version: 1.3.1
+
+  shards:
+    git: https://github.com/crystal-lang/shards.git
+    version: 0.15.0
 
   simple_retry:
     git: https://github.com/spider-gazelle/simple_retry.git

@@ -4,28 +4,50 @@ require "placeos-models/driver"
 require "placeos-models/repository"
 require "placeos-resource"
 
+require "placeos-build/client"
+
 require "./cloning"
 require "./module_manager"
 
 module PlaceOS
-  # TODO: Remove after this is resolved https://github.com/place-technology/roadmap/issues/24
   class Core::Compilation < Resource(Model::Driver)
     private getter? startup : Bool = true
     private getter module_manager : ModuleManager
     private getter compiler_lock = Mutex.new
 
+    getter binary_dir : String
+
     def initialize(
       @startup : Bool = true,
-      binary_dir : String = Compiler.binary_dir,
-      repository_dir : String = Compiler.repository_dir,
+      @binary_dir : String = Path["./bin/drivers"].expand.to_s,
       @module_manager : ModuleManager = ModuleManager.instance
     )
+      Dir.mkdir_p binary_dir
       buffer_size = System.cpu_count.to_i
-
-      Compiler.binary_dir = binary_dir
-      Compiler.repository_dir = repository_dir
-
       super(buffer_size)
+    end
+
+    def self.fetch_driver(
+      driver : Model::Driver,
+      username : String? = nil,
+      password : String? = nil,
+      request_id : String? = nil
+    ) : String?
+      result = Build::Client.client(BUILD_URI) do |client|
+        client.compile(
+          file: driver.file_name,
+          url: driver.repository.uri,
+          commit: driver.commit,
+          username: username,
+          password: password,
+          request_id: request_id
+        ) do |key, driver_io|
+          File.open(File.join(binary_dir, key), mode: "w+", perm: File::Permissions.new(0o744)) do |file_io|
+            IO.copy driver_io, file_io
+          end
+        end
+      end
+      result.path if result.is_a? Build::Compilation::Success
     end
 
     def process_resource(action : Resource::Action, resource driver : Model::Driver) : Resource::Result

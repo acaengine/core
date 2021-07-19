@@ -33,6 +33,10 @@ dependencies:
     github: spider-gazelle/log_helper
     version: ~> 1
 
+  placeos-build:
+    github: placeos/build
+    version: ~> 0.2
+
   placeos-compiler:
     github: placeos/compiler
     version: ~> 4.0

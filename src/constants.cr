@@ -21,6 +21,10 @@ module PlaceOS::Core
   CORE_HOST = ENV["CORE_HOST"]? || System.hostname
   CORE_PORT = (ENV["CORE_PORT"]? || "3000").to_i
 
+  BUILD_HOST = ENV["PLACEOS_BUILD_HOST"]?.presence || "build"
+  BUILD_PORT = ENV["PLACEOS_BUILD_PORT"]?.presence.try(&.to_i?) || 3000
+  BUILD_URI  = URI.parse("http://#{BUILD_HOST}:#{BUILD_PORT}")
+
   PROD = ENV["SG_ENV"]?.try(&.downcase) == "production"
 
   class_getter? production : Bool = PROD

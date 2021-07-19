@@ -1,0 +1,4 @@
+dependencies:
+  secrets-env:
+    github: spider-gazelle/secrets-env
+    version: ~> 1
