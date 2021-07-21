@@ -46,11 +46,16 @@ services:
     image: eqalpha/keydb
     restart: always
     hostname: redis
+    ports:
+      - 127.0.0.1:7379:6379
 
   rethink:
     image: rethinkdb:${RETHINKDB_VERSION:-2.4}
     restart: always
     hostname: rethink
+    ports:
+      - 127.0.0.1:8093:8080
+      - 127.0.0.1:28015:28015
 
   etcd:
     image: bitnami/etcd:${ETCD_VERSION:-3}
@@ -58,3 +63,7 @@ services:
     hostname: etcd
     environment:
       ALLOW_NONE_AUTHENTICATION: "yes"
+    ports:
+      - 127.0.0.1:8091:2379
+      - 127.0.0.1:8092:2380
+      

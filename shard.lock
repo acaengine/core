@@ -72,6 +72,10 @@ shards:
     git: https://github.com/crystal-community/hardware.git
     version: 0.5.2
 
+  hashcash:
+    git: https://github.com/place-labs/hashcash.git
+    version: 0.1.0+git.commit.c3a426c79a9efbcc4342c7ae0cf1fef2a2495b7f
+
   hound-dog:
     git: https://github.com/place-labs/hound-dog.git
     version: 2.9.0
@@ -180,6 +184,10 @@ shards:
     git: https://github.com/spider-gazelle/simple_retry.git
     version: 1.1.1
 
+  sodium:
+    git: https://github.com/didactic-drunk/sodium.cr.git
+    version: 1.2.3
+
   ssh2:
     git: https://github.com/spider-gazelle/ssh2.cr.git
     version: 1.5.2
@@ -195,6 +203,10 @@ shards:
   ulid:
     git: https://github.com/place-labs/ulid.git
     version: 0.1.2
+
+  webmock:
+    git: https://github.com/manastech/webmock.cr.git
+    version: 0.14.0+git.commit.42b347cdd64e13193e46167a03593944ae2b3d20
 
   yaml_mapping:
     git: https://github.com/crystal-lang/yaml_mapping.cr.git
